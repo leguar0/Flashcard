@@ -1,1 +1,2 @@
-# Fiszki
+# FlashCard
+Language learning tool
