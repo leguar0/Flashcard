@@ -1,3 +1,9 @@
+//
+//		author: @leguar
+//		date: 19/11/24
+//		purpose: 
+//
+
 #ifndef FLASHCARD_H
 #define FLASHCARD_H
 

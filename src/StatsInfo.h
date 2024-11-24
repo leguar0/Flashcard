@@ -23,7 +23,7 @@ namespace flashcard
 
 	class StatsInterface
 	{
-		struct CStatsInfo
+		static struct CStatsInfo
 		{
 			uint32_t				m_uiPoints = 0;
 			uint32_t				m_uiPointsToday = 0;
@@ -31,9 +31,7 @@ namespace flashcard
 
 			std::vector<CFlashcard>	vFlashcardsMemorized;
 			std::vector<CFlashcard>	vFlashcardsUnmemorized;
-		};
-
-		static CStatsInfo		m_StatsInfo;
+		} m_StatsInfo;
 	public:
 		static void AddPoints(int iPoints) 
 		{
