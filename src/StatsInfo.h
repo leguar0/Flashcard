@@ -15,8 +15,9 @@
 
 namespace flashcard
 {
-	struct FlashcardNotFoundException
+	struct FlashcardNotFoundException final
 	{
+		const char* what;
 	};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -53,9 +54,9 @@ namespace flashcard
 			return GetCountFlashcardsMemorized() + GetCountFlashcardsUnmemorized();
 		}
 
-		static void AddNewFlashcard(const CFlashcard* flashcard)
+		static void AddNewFlashcard(const CFlashcard& flashcard)
 		{
-			m_StatsInfo.vFlashcardsUnmemorized.push_back(*flashcard);
+			m_StatsInfo.vFlashcardsUnmemorized.push_back(flashcard);
 		}
 
 		static void MarkAsMemorized(eLanguage originalLang, eLanguage translatedLang, std::string word);

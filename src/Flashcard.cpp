@@ -47,3 +47,14 @@ namespace flashcard
 		return m_sTranslatedText;
 	}
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+std::ostream& operator<<(std::ostream& os, flashcard::CFlashcard& flashcard)
+{
+	os << "OriginalLang " << static_cast<int>(flashcard.GetOriginalLang())
+		<< " TranslatedLang " << static_cast<int>(flashcard.GetTranslatedLang())
+		<< " OriginalText " << flashcard.GetOriginalText()
+		<< " TranslatedText " << flashcard.GetTranslatedText() << std::endl;
+	return os;
+}

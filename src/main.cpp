@@ -1,43 +1,53 @@
 #include <iostream>
 #include "StatsInfo.h"
+#include "FlashHandler.h"
 
 int main()
 {
 #ifdef _DEBUG
-	flashcard::StatsInterface::AddNewFlashcard(
-		new flashcard::CFlashcard(
-			flashcard::eLanguage::LANGUAGE_ENGLISH,
-			flashcard::eLanguage::LANGUAGE_POLISH,
-			"dog",
-			"pies"
-		));
+	//flashcard::CFlashcard flashc(
+	//	flashcard::eLanguage::LANGUAGE_ENGLISH,
+	//	flashcard::eLanguage::LANGUAGE_POLISH,
+	//	"dog",
+	//	"pies");
 
-	flashcard::StatsInterface::MarkAsMemorized(
-		flashcard::eLanguage::LANGUAGE_ENGLISH,
-		flashcard::eLanguage::LANGUAGE_POLISH,
-		"dog"
-	);
+	//flashcard::StatsInterface::AddNewFlashcard(flashc);
 
-	try
+	//flashcard::StatsInterface::MarkAsMemorized(
+	//	flashcard::eLanguage::LANGUAGE_ENGLISH,
+	//	flashcard::eLanguage::LANGUAGE_POLISH,
+	//	"dog"
+	//);
+
+	//try
+	//{
+	//	flashcard::StatsInterface::MarkAsMemorized(
+	//		flashcard::eLanguage::LANGUAGE_ENGLISH,
+	//		flashcard::eLanguage::LANGUAGE_POLISH,
+	//		"cat"
+	//	);
+	//} 
+	//catch (flashcard::FlashcardNotFoundException flashcardNotFoundEx)
+	//{
+	//	std::cout << "Exception: " << flashcardNotFoundEx.what << std::endl;
+	//}
+
+	//std::cout <<
+	//	flashcard::StatsInterface::GetCountFlashcardsUnmemorized()
+	//	<< std::endl;
+
+	//std::cout <<
+	//	flashcard::StatsInterface::GetCountFlashcards()
+	//	<< std::endl;
+
+	std::vector<flashcard::CFlashcard> vFlashcards;
+	CFlashHandler::loadFlashcards("../data/flashcards.txt", vFlashcards);
+
+	for (auto flashcard : vFlashcards )
 	{
-		flashcard::StatsInterface::MarkAsMemorized(
-			flashcard::eLanguage::LANGUAGE_ENGLISH,
-			flashcard::eLanguage::LANGUAGE_POLISH,
-			"cat"
-		);
-	} 
-	catch (flashcard::FlashcardNotFoundException)
-	{
-		std::cout << "Exception: flashcard not found" << std::endl;
+		std::cout << flashcard << std::endl;
 	}
 
-	std::cout <<
-		flashcard::StatsInterface::GetCountFlashcardsUnmemorized()
-		<< std::endl;
-
-	std::cout <<
-		flashcard::StatsInterface::GetCountFlashcards()
-		<< std::endl;
 #endif // _DEBUG
 	return 0;
 }

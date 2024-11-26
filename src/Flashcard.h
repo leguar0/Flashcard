@@ -8,10 +8,13 @@
 #define FLASHCARD_H
 
 #include <string>
+#include <iostream>
 
 namespace flashcard
 {
 	enum class eLanguage { LANGUAGE_POLISH, LANGUAGE_ENGLISH, LANGUAGE_GERMAN, LANGUAGE_SPANISH };
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	class CFlashcard
 	{
@@ -32,5 +35,8 @@ namespace flashcard
 	};
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+std::ostream& operator<<(std::ostream& os, flashcard::CFlashcard& flashcard);
 
 #endif // !FLASHCARD_H

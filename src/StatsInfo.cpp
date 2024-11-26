@@ -19,6 +19,7 @@ namespace flashcard {
 		if (itFlashcard == m_StatsInfo.vFlashcardsUnmemorized.end())
 		{
 			FlashcardNotFoundException error;
+			error.what = "Flashcard not found";
 			throw error;
 		}
 
