@@ -22,7 +22,7 @@ namespace flashcard
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	class StatsInterface
+	class CStatsManager
 	{
 		static struct CStatsInfo
 		{
@@ -33,6 +33,8 @@ namespace flashcard
 			std::vector<CFlashcard>	vFlashcardsMemorized;
 			std::vector<CFlashcard>	vFlashcardsUnmemorized;
 		} m_StatsInfo;
+
+		CStatsManager();
 	public:
 		static void AddPoints(int iPoints) 
 		{

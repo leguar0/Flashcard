@@ -1,11 +1,11 @@
-#include "StatsInfo.h"
+#include "StatsManager.h"
 
 namespace flashcard {
-	StatsInterface::CStatsInfo StatsInterface::m_StatsInfo;
+	CStatsManager::CStatsInfo CStatsManager::m_StatsInfo;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	void StatsInterface::MarkAsMemorized(eLanguage originalLang, eLanguage translatedLang, std::string word)
+	void CStatsManager::MarkAsMemorized(eLanguage originalLang, eLanguage translatedLang, std::string word)
 	{
 		auto itFlashcard = std::find_if(
 			m_StatsInfo.vFlashcardsUnmemorized.begin(),

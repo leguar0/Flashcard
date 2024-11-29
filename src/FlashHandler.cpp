@@ -1,6 +1,36 @@
 #include "FlashHandler.h"
 
-void CFlashHandler::loadFlashcards(const std::string& filePath, std::vector<flashcard::CFlashcard>& vFlashcards)
+bool CFlashHandler::loadUserStats(const std::string& filePath, flashcard::StatsInterface& stats)
+{
+	std::ifstream file(filePath);
+
+	if (file)
+	{
+
+	}
+	else
+	{
+		return false;
+	}
+	file.close();
+	return true;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void CFlashHandler::saveUserStats(const std::string& filePath, flashcard::StatsInterface& stats)
+{
+	std::ofstream file(filePath);
+
+	if (file)
+	{
+
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+bool CFlashHandler::loadFlashcards(const std::string& filePath, std::vector<flashcard::CFlashcard>& vFlashcards)
 {
 	std::ifstream file(filePath);
 
@@ -21,7 +51,28 @@ void CFlashHandler::loadFlashcards(const std::string& filePath, std::vector<flas
 	}
 	else
 	{
-		std::cout << "ERROR Z PLIKIEM!!!" << std::endl;
+		return false;
+	}
+
+	file.close();
+	return true;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void CFlashHandler::saveFlashcards(const std::string& filePath, std::vector<flashcard::CFlashcard>& vFlashcards)
+{
+	std::ofstream file(filePath);
+
+	if (file)
+	{
+		file.clear();
+
+		for (auto flashcard : vFlashcards)
+			file << static_cast<int>(flashcard.GetOriginalLang()) << " "
+			<< static_cast<int>(flashcard.GetTranslatedLang()) << " "
+			<< flashcard.GetOriginalText() << " "
+			<< flashcard.GetTranslatedText() << "\n";
 	}
 
 	file.close();
