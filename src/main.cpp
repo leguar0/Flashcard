@@ -1,14 +1,16 @@
 #include <iostream>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include "StatsInfo.h"
-#include "FlashHandler.h"
+#include "User.h"
 
 int main(int argc, char *argv[])
 {
 	QGuiApplication app(argc, argv);
 	
 	QQmlApplicationEngine engine;
+
+	flashcard::CUser user;
+
 	const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
 
 	QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
@@ -21,8 +23,6 @@ int main(int argc, char *argv[])
 
 	return app.exec();
 
-
-/*
 #ifdef _DEBUG
 	//flashcard::CFlashcard flashc(
 	//	flashcard::eLanguage::LANGUAGE_ENGLISH,
@@ -58,20 +58,5 @@ int main(int argc, char *argv[])
 	//std::cout <<
 	//	flashcard::StatsInterface::GetCountFlashcards()
 	//	<< std::endl;
-
-	std::vector<flashcard::CFlashcard> vFlashcards;
-	bool isLoad = CFlashHandler::loadFlashcards("../data/flashcards.txt", vFlashcards);
-
-	if (isLoad)
-	{
-		for (auto flashcard : vFlashcards)
-		{
-			std::cout << flashcard << std::endl;
-		}
-
-		CFlashHandler::saveFlashcards("../data/flashcards.txt", vFlashcards);
-	}
-
 #endif // _DEBUG
-*/
 }

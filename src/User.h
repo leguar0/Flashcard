@@ -1,15 +1,24 @@
+//
+//		author: @leguar
+//		date: 19/11/24
+//		purpose: 
+//
 #ifndef USER_H
 #define USER_H
 
-#include "StatsInfo.h"
+#include <QObject>
 
 namespace flashcard
 {
-	class CUser
+	class CUser : public QObject
 	{
+		Q_OBJECT
 	public:
 		CUser();
 		~CUser();
+
+	public slots:
+
 	};
 }
 

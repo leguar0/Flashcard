@@ -1,6 +1,6 @@
 #include "FlashHandler.h"
 
-bool CFlashHandler::loadUserStats(const std::string& filePath, flashcard::StatsInterface& stats)
+bool CFlashHandler::loadUserStats(const std::string& filePath)
 {
 	std::ifstream file(filePath);
 
@@ -18,7 +18,7 @@ bool CFlashHandler::loadUserStats(const std::string& filePath, flashcard::StatsI
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void CFlashHandler::saveUserStats(const std::string& filePath, flashcard::StatsInterface& stats)
+void CFlashHandler::saveUserStats(const std::string& filePath)
 {
 	std::ofstream file(filePath);
 

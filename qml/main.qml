@@ -87,6 +87,7 @@ ApplicationWindow {
             }
 
             Text {
+                id: flashcard
                 anchors.centerIn: parent
                 text: "Flashcard"
                 font.pointSize: 32
@@ -105,6 +106,7 @@ ApplicationWindow {
                 color: mouseArea2.containsMouse ? "#B9A9D5" : "#A8A8D5"
 
                 Button {
+                    id: button_yes
                     anchors.centerIn: parent
                     text: "I know"
                     flat: true
@@ -123,6 +125,7 @@ ApplicationWindow {
                 color: mouseArea4.containsMouse ? "#B9A9D5" : "#A8A8D5"
 
                 Button {
+                    id: button_no
                     anchors.centerIn: parent
                     text: "Turn over"
                     flat: true

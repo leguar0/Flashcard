@@ -1,13 +1,12 @@
 #include "User.h"
 #include "FlashHandler.h"
 
-flashcard::CUser::CUser(StatsManager statsManager)
-	: m_StatsManager(statsManager)
+flashcard::CUser::CUser()
 {
-	CFlashHandler::loadUserStats("../data/userstats.txt", m_StatsManager);
+	CFlashHandler::loadUserStats("../data/userstats.txt");
 }
 
 flashcard::CUser::~CUser()
 {
-	CFlashHandler::saveUserStats("../data/userstats.txt", m_StatsManager);
+	CFlashHandler::saveUserStats("../data/userstats.txt");
 }
