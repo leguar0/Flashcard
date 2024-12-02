@@ -18,13 +18,9 @@ class CSettings : public QObject
 		THEME_MODE_LIGHT, THEME_MODE_DARK
 	} m_ThemeMode;
 
-	CSettings();
 public:
 
-
-	static void SetThemeMode(eThemeMode themeMode);
-
-public slots:
+	void SetThemeMode(eThemeMode themeMode);
 };
 
 

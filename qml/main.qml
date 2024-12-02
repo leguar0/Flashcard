@@ -83,6 +83,7 @@ ApplicationWindow {
                 MouseArea {
                     id: mouseArea3
                     anchors.fill: parent
+                    onClicked: menuObject.DisplayHint()
                 }
             }
 

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include "User.h"
+#include "Menu.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,17 +9,14 @@ int main(int argc, char *argv[])
 	
 	QQmlApplicationEngine engine;
 
-	flashcard::CUser user;
+	CSettings settings;
+	CMenu menu(nullptr, &settings);
 
-	const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
+	engine.rootContext()->setContextProperty("menuObject", &menu);
 
-	QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-		&app, [url](QObject* obj, const QUrl& objUrl) {
-			if (!obj && url == objUrl)
-				QCoreApplication::exit(-1);
-		}, Qt::QueuedConnection);
-
-	engine.load(url);
+	engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
+	if (engine.rootObjects().isEmpty())
+		return -1;
 
 	return app.exec();
 

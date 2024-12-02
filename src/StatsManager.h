@@ -17,7 +17,7 @@ namespace flashcard
 {
 	struct FlashcardNotFoundException final
 	{
-		const char* what;
+		const char*		what;
 	};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -26,12 +26,11 @@ namespace flashcard
 	{
 		static struct CStatsInfo
 		{
-			uint32_t				m_uiPoints = 0;
-			uint32_t				m_uiPointsToday = 0;
-			int16_t					m_iFlashcardsToday = 0;
+			uint32_t					m_uiPoints = 0;
+			uint32_t					m_uiPointsToday = 0;
+			int16_t						m_iFlashcardsToday = 0;
 
-			std::vector<CFlashcard>	vFlashcardsMemorized;
-			std::vector<CFlashcard>	vFlashcardsUnmemorized;
+			std::vector<CFlashcard*>	vFlashcards;
 		} m_StatsInfo;
 
 		CStatsManager();
@@ -41,27 +40,26 @@ namespace flashcard
 			m_StatsInfo.m_uiPoints += iPoints;
 		}
 
-		static size_t GetCountFlashcardsMemorized()
-		{
-			return m_StatsInfo.vFlashcardsMemorized.size();
-		}
-
-		static size_t GetCountFlashcardsUnmemorized()
-		{
-			return m_StatsInfo.vFlashcardsUnmemorized.size();
-		}
-
 		static size_t GetCountFlashcards()
 		{
-			return GetCountFlashcardsMemorized() + GetCountFlashcardsUnmemorized();
+			return m_StatsInfo.vFlashcards.size();
 		}
 
-		static void AddNewFlashcard(const CFlashcard& flashcard)
+		static void AddNewFlashcard(CFlashcard* flashcard)
 		{
-			m_StatsInfo.vFlashcardsUnmemorized.push_back(flashcard);
+			m_StatsInfo.vFlashcards.push_back(flashcard);
+		}
+
+		static CFlashcard* GetFlashcard(int index)
+		{
+			return m_StatsInfo.vFlashcards[index];
 		}
 
 		static void MarkAsMemorized(eLanguage originalLang, eLanguage translatedLang, std::string word);
+
+		static void SaveFlashcardsToDisk();
+
+		static void LoadFlashcardsFromDisk();
 	};
 }
 

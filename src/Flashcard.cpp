@@ -3,9 +3,10 @@
 namespace flashcard
 {
 	CFlashcard::CFlashcard(eLanguage originalLang, eLanguage translatedLang,
-		std::string originalText, std::string translatedText)
+		std::string originalText, std::string translatedText, bool isMemorized)
 		: m_nOriginalLang(originalLang), m_nTranslatedLang(translatedLang),
-		m_sOriginalText(originalText), m_sTranslatedText(translatedText)
+		m_sOriginalText(originalText), m_sTranslatedText(translatedText),
+		m_bIsMemorized(isMemorized)
 	{
 	}
 
@@ -45,6 +46,20 @@ namespace flashcard
 	std::string CFlashcard::GetTranslatedText() const
 	{
 		return m_sTranslatedText;
+	}
+	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	bool CFlashcard::GetIsMemorized() const
+	{
+		return m_bIsMemorized;
+	}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	void CFlashcard::SetIsMemorized(bool isMemorized)
+	{
+		m_bIsMemorized = isMemorized;
 	}
 }
 
