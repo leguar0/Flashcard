@@ -12,6 +12,7 @@ Creating an application for learning languages
 - C++17
 - CMake 3.21
 - Qt 6.7.2
+- GTest
 
 ## Clone repository
 repository: https://github.com/leguar0/Flashcard
