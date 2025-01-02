@@ -18,15 +18,15 @@ repository: https://github.com/leguar0/Flashcard
 
 ## Run from terminal 
 1. Run cmake and build
-'''
+```
 mkdir build
 cd build
 cmake ..
-'''
+```
 2. Run
-'''
+```
 ./<BUILD DIR>/Flashcards
-'''
+```
 ## Description
 1. Class flashcard
    - create a flashcard and set its parameters
