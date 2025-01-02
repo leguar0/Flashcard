@@ -9,16 +9,20 @@
 
 #include <QObject>
 
+enum eThemeMode
+{
+	THEME_MODE_LIGHT, THEME_MODE_DARK
+};
+
 class CSettings : public QObject
 {
 	Q_OBJECT
 
-	enum eThemeMode
-	{
-		THEME_MODE_LIGHT, THEME_MODE_DARK
-	} m_ThemeMode;
+	eThemeMode m_ThemeMode;
 
 public:
+
+	eThemeMode GetThemeMode() const;
 
 	void SetThemeMode(eThemeMode themeMode);
 };

@@ -24,43 +24,43 @@ namespace flashcard
 
 	class CStatsManager
 	{
-		static struct CStatsInfo
+		struct CStatsInfo
 		{
 			uint32_t					m_uiPoints = 0;
 			uint32_t					m_uiPointsToday = 0;
 			int16_t						m_iFlashcardsToday = 0;
 
-			std::vector<CFlashcard*>	vFlashcards;
+			std::vector<CFlashcard*>	m_vecFlashcards;
 		} m_StatsInfo;
 
 		CStatsManager();
 	public:
-		static void AddPoints(int iPoints) 
+		void AddPoints(int iPoints) 
 		{
 			m_StatsInfo.m_uiPoints += iPoints;
 		}
 
-		static size_t GetCountFlashcards()
+		size_t GetCountFlashcards()
 		{
-			return m_StatsInfo.vFlashcards.size();
+			return m_StatsInfo.m_vecFlashcards.size();
 		}
 
-		static void AddNewFlashcard(CFlashcard* flashcard)
+		void AddNewFlashcard(CFlashcard* flashcard)
 		{
-			m_StatsInfo.vFlashcards.push_back(flashcard);
+			m_StatsInfo.m_vecFlashcards.push_back(flashcard);
 		}
 
-		static CFlashcard* GetFlashcard(int index)
+		CFlashcard* GetFlashcard(int index)
 		{
-			return m_StatsInfo.vFlashcards[index];
+			return m_StatsInfo.m_vecFlashcards[index];
 		}
 
-		static void MarkAsMemorized(eLanguage originalLang, eLanguage translatedLang, std::string word);
+		void MarkAsMemorized(eLanguage originalLang, eLanguage translatedLang, std::string word);
 
-		static void SaveFlashcardsToDisk();
+		void SaveFlashcardsToDisk();
 
-		static void LoadFlashcardsFromDisk();
+		void LoadFlashcardsFromDisk();
 	};
-}
+} // namespace FLASHCARD
 
 #endif // !STATSINFO_H

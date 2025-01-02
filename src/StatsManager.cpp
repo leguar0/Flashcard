@@ -2,22 +2,25 @@
 #include <fstream>
 
 namespace flashcard {
-	CStatsManager::CStatsInfo CStatsManager::m_StatsInfo;
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	// Name			:	MarkAsMemorized
+	// Purpose		:	Set the flashcard as known
+	// Parameters	:	originalLang - original language of the word
+	//					translatedLang - translated language of the word
+	//					word - word in the original language
+	// Returns		:	void - none
 	void CStatsManager::MarkAsMemorized(eLanguage originalLang, eLanguage translatedLang, std::string word)
 	{
 		auto itFlashcard = std::find_if(
-			m_StatsInfo.vFlashcards.begin(),
-			m_StatsInfo.vFlashcards.end(),
+			m_StatsInfo.m_vecFlashcards.begin(),
+			m_StatsInfo.m_vecFlashcards.end(),
 			[=](CFlashcard* flashcard) {
 				return flashcard->GetOriginalLang() == originalLang &&
 					flashcard->GetTranslatedLang() == translatedLang &&
 					flashcard->GetOriginalText() == word;
 			});
 
-		if (itFlashcard == m_StatsInfo.vFlashcards.end())
+		if (itFlashcard == m_StatsInfo.m_vecFlashcards.end())
 		{
 			FlashcardNotFoundException error;
 			error.what = "Flashcard not found";
@@ -30,15 +33,18 @@ namespace flashcard {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	// Name			:	SaveFlashcardsToDisk
+	// Purpose		:	Save flashcards to disk
+	// Returns		:	void - none
 	void CStatsManager::SaveFlashcardsToDisk()
 	{
 		std::ofstream file("../data/flashcards.txt");
 
-		std::vector<CFlashcard*> flashcards(m_StatsInfo.vFlashcards.begin(), m_StatsInfo.vFlashcards.end());
+		std::vector<CFlashcard*> flashcards(m_StatsInfo.m_vecFlashcards.begin(), m_StatsInfo.m_vecFlashcards.end());
 
 		for (auto flashcard : flashcards) 
 		{
-			file << "1 " << static_cast<int>(flashcard->GetOriginalLang()) << " "
+			file << flashcard->GetIsMemorized() << " " << static_cast<int>(flashcard->GetOriginalLang()) << " "
 				<< static_cast<int>(flashcard->GetTranslatedLang()) << " "
 				<< flashcard->GetOriginalText() << " "
 				<< flashcard->GetTranslatedText() << "\n";
@@ -54,6 +60,9 @@ namespace flashcard {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	// Name			:	LoadFlashcardsFromDisk
+	// Purpose		:	Load flashcards from disk
+	// Returns		:	void - none
 	void CStatsManager::LoadFlashcardsFromDisk()
 	{
 		std::ifstream file("../data/flashcards.txt");
@@ -76,16 +85,9 @@ namespace flashcard {
 			CFlashcard* flashcard = new CFlashcard(static_cast<eLanguage>(originalLang),
 				static_cast<eLanguage>(translatedLang), originalText, translatedText);
 			
-			if (isMemorized)
-			{
-				m_StatsInfo.vFlashcardsMemorized.push_back(flashcard);
-			}
-			else
-			{
-				m_StatsInfo.vFlashcardsUnmemorized.push_back(flashcard);
-			}
+			m_StatsInfo.m_vecFlashcards.push_back(flashcard);
 		}
 
 		file.close();
 	}
-}
+} // namespace FLASHCARD

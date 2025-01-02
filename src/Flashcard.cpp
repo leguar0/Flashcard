@@ -4,9 +4,11 @@ namespace flashcard
 {
 	CFlashcard::CFlashcard(eLanguage originalLang, eLanguage translatedLang,
 		std::string originalText, std::string translatedText, bool isMemorized)
-		: m_nOriginalLang(originalLang), m_nTranslatedLang(translatedLang),
-		m_sOriginalText(originalText), m_sTranslatedText(translatedText),
-		m_bIsMemorized(isMemorized)
+		: m_nOriginalLang(originalLang),
+		  m_nTranslatedLang(translatedLang),
+		  m_stOriginalText(originalText),
+		  m_stTranslatedText(translatedText),
+		  m_bIsMemorized(isMemorized)
 	{
 	}
 
@@ -14,7 +16,7 @@ namespace flashcard
 
 	bool CFlashcard::operator==(std::string word)
 	{
-		if (word == m_sTranslatedText)
+		if (word == m_stTranslatedText)
 			return true;
 
 		return false;
@@ -38,14 +40,14 @@ namespace flashcard
 
 	std::string CFlashcard::GetOriginalText() const
 	{
-		return m_sOriginalText;
+		return m_stOriginalText;
 	}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	std::string CFlashcard::GetTranslatedText() const
 	{
-		return m_sTranslatedText;
+		return m_stTranslatedText;
 	}
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,9 +63,7 @@ namespace flashcard
 	{
 		m_bIsMemorized = isMemorized;
 	}
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+} // namespace FLASHCARD
 
 std::ostream& operator<<(std::ostream& os, flashcard::CFlashcard& flashcard)
 {

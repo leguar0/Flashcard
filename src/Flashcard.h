@@ -1,7 +1,7 @@
 //
 //		author: @leguar
 //		date: 21/11/24
-//		purpose: 
+//		purpose: flashcard class
 //
 
 #ifndef FLASHCARD_H
@@ -18,11 +18,11 @@ namespace flashcard
 
 	class CFlashcard
 	{
-		eLanguage		m_nOriginalLang;
-		eLanguage		m_nTranslatedLang;
-		std::string		m_sOriginalText;
-		std::string		m_sTranslatedText; 
-		bool			m_bIsMemorized;
+		eLanguage		m_nOriginalLang; //the original language of the word
+		eLanguage		m_nTranslatedLang; //the translated language of the word
+		std::string		m_stOriginalText; //the original text of the word
+		std::string		m_stTranslatedText; //the translated text of the word
+		bool			m_bIsMemorized; //whether it is know
 	public:
 		CFlashcard(eLanguage originalLang, eLanguage translatedLang,
 			std::string originalText, std::string translatedText, bool isMemorized = false);
@@ -37,7 +37,7 @@ namespace flashcard
 
 		void			SetIsMemorized(bool isMemorized);
 	};
-}
+} // namespace FLASHCARD
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

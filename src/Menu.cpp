@@ -16,6 +16,24 @@ CMenu::~CMenu()
 	flashcard::CStatsManager::SaveFlashcardsToDisk();
 }
 
+void CMenu::ChangeTheme()
+{
+	if (m_Settings->GetThemeMode() == eThemeMode::THEME_MODE_DARK)
+	{
+		m_Settings->SetThemeMode(eThemeMode::THEME_MODE_LIGHT);
+	}
+	else
+	{
+		m_Settings->SetThemeMode(eThemeMode::THEME_MODE_DARK);
+	}
+}
+
+void CMenu::AddNewFlashcard()
+{
+	std::cout << "TEST" << std::endl;
+}
+
+
 void CMenu::DisplayHint()
 {
 	std::cout << "TEST" << std::endl;

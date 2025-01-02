@@ -30,9 +30,8 @@ public slots:
 	// 
 	// 
 	//
-	//void ChangeTheme();
-	//void AddNewFlashcard();
-
+	void ChangeTheme();
+	void AddNewFlashcard();
 	void DisplayHint();
 
 };
