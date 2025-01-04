@@ -24,16 +24,6 @@ namespace flashcard
 
 	class CStatsManager
 	{
-		struct CStatsInfo
-		{
-			uint32_t					m_uiPoints = 0;
-			uint32_t					m_uiPointsToday = 0;
-			int16_t						m_iFlashcardsToday = 0;
-
-			std::vector<CFlashcard*>	m_vecFlashcards;
-		} m_StatsInfo;
-
-		CStatsManager();
 	public:
 		void AddPoints(int iPoints) 
 		{
@@ -60,6 +50,16 @@ namespace flashcard
 		void SaveFlashcardsToDisk();
 
 		void LoadFlashcardsFromDisk();
+		
+	private:
+		struct CStatsInfo
+		{
+			uint32_t					m_uiPoints = 0;
+			uint32_t					m_uiPointsToday = 0;
+			int16_t						m_iFlashcardsToday = 0;
+
+			std::vector<CFlashcard*>	m_vecFlashcards;
+		} m_StatsInfo;
 	};
 } // namespace FLASHCARD
 

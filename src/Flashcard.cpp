@@ -65,6 +65,8 @@ namespace flashcard
 	}
 } // namespace FLASHCARD
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 std::ostream& operator<<(std::ostream& os, flashcard::CFlashcard& flashcard)
 {
 	os << "OriginalLang " << static_cast<int>(flashcard.GetOriginalLang())

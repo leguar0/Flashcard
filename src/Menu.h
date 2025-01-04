@@ -21,6 +21,7 @@ class CMenu : public QObject
 	CSettings*					m_Settings;
 	int							m_nIndexFlashcard;
 	flashcard::CFlashcard*		m_ActualFlashcard;
+	flashcard::CStatsManager	m_StatsManager;
 public:
 	CMenu(QObject* parent = nullptr, CSettings* settings = nullptr, int index = 0);
 	~CMenu();
